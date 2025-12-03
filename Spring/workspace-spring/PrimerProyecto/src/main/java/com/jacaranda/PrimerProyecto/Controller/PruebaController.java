@@ -17,24 +17,27 @@ public class PruebaController {
 	@Autowired
 	public ServiceCalc service;
 	
+	@GetMapping("/")
+    public String showOperationsForm() {
+        return "suma";
+    }
 	
 	@PostMapping("/")
-	public String result(@RequestParam Optional<String> numeroA, @RequestParam Optional<String> numeroB, @RequestParam Optional<String> select, Model model) {
-		try {
-			int n1 = Integer.parseInt(numeroA.get());
-			int n2= Integer.parseInt(numeroB.get());
-			int result = service.operations(n1, n2, select.get());
-			model.addAttribute("numeroA", numeroA.get());
-			model.addAttribute("numeroB", numeroB.get());
-			model.addAttribute("select", select);
-			model.addAttribute("result", result);	
-			
+	public String resultOperations(@RequestParam Optional<String> numeroA, @RequestParam Optional<String> numeroB, @RequestParam Optional<String> select, Model model) {
+		try {		
+			if(numeroA.isPresent()&&numeroB.isPresent()&&select.isPresent()) {
+				int result = service.operations(numeroA, numeroB, select);
+				model.addAttribute("numeroA", numeroA);	
+				model.addAttribute("numeroB", numeroB);	
+				model.addAttribute("result", result);	
+			}
+
 		} catch (Exception e) {
 			String error = "No son numeros o estan vacios.";
 			model.addAttribute("error", error);
 		}
 		
-		return "/";
+		return "suma";
 	}
 	
 	
@@ -48,7 +51,7 @@ public class PruebaController {
 //		model.addAttribute("num1",numeroA);//Lo que hace es que lo guarda como una memoria,es decir, localStorage
 //		model.addAttribute("num2",numeroB);
 //		model.addAttribute("result",result);
-//		return "result";
+//		return "result";{
 //	}
 
 //	@PostMapping("/suma")

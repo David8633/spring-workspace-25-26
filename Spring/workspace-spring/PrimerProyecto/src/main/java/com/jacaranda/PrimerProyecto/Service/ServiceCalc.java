@@ -1,23 +1,31 @@
 package com.jacaranda.PrimerProyecto.Service;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class ServiceCalc {
 
-	public int operations(int num1, int num2, String select) {
+	public int operations(Optional<String> numeroA, Optional<String> numeroB, Optional<String> select) {
+		String numero1Value = numeroA.get();
+		String numero2Value = numeroB.get();
+		String selectValue = select.get();
 		
-		if(select == "sumar") {
-			return num1 +num2;
-		}else if(select == "restar") {
-			return num1  - num2;
-		}else if(select == "multiplicar") {
-			return num1 * num2;
-		}else if(select == "dividir") {
-			if((num1==0 || num2 == 0) && (num1!=0 || num2 != 0)) {
+		int n1 = Integer.parseInt(numero1Value);
+		int n2= Integer.parseInt(numero2Value);
+		
+		if(selectValue == "sumar") {
+			return n1 +n2;
+		}else if(selectValue == "restar") {
+			return n1  - n2;
+		}else if(selectValue == "multiplicar") {
+			return n1 * n2;
+		}else if(selectValue == "dividir") {
+			if((n1==0 || n2 == 0) && (n1!=0 || n2 != 0)) {
 				String error = "no se puede dividir entre 0";
 			}else {
-				return num1/num2;
+				return n1/n2;
 			}
 		}
 		return 0;

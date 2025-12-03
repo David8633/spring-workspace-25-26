@@ -1,11 +1,30 @@
 
-                        
-<form th:action="@{/}" method="post">
-	<h2 th:if="${!error}">
-		El resultado de 
-		<snap th:text = "${numeroA}"></snap> + 
-		<snap th:text = "${numeroB}"></snap> =
-		<snap th:text = "${result}"></snap> .
+<form  method="POST">
+	<h2 th:if="!error">
+		<h2 th:if="${select==sumar}">
+			El resultado de 
+			<snap th:text = "${numeroA}"></snap> + 
+			<snap th:text = "${numeroB}"></snap> =
+			<snap th:text = "${result}"></snap> .
+		</h2>
+		<h2 th:if="${select==restar}">
+					El resultado de 
+					<snap th:text = "${numeroA}"></snap> -
+					<snap th:text = "${numeroB}"></snap> =
+					<snap th:text = "${result}"></snap> .
+		</h2>
+		<h2 th:if="${select==multiplicar}">
+					El resultado de 
+					<snap th:text = "${numeroA}"></snap> *
+					<snap th:text = "${numeroB}"></snap> =
+					<snap th:text = "${result}"></snap> .
+		</h2>
+		<h2 th:if="${select==dividir}">
+					El resultado de 
+					<snap th:text = "${numeroA}"></snap> /
+					<snap th:text = "${numeroB}"></snap> =
+					<snap th:text = "${result}"></snap> .
+		</h2>
 	</h2>
 	<h2 if="${error}"><span th:text="${error}"></h2>
 		
