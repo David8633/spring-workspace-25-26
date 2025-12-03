@@ -1,31 +1,31 @@
 
 <form  method="POST">
-	<h2 th:if="!error">
-		<h2 th:if="${select==sumar}">
+	<snap th:if="!error">
+		<snap th:if="${select==sumar}">
 			El resultado de 
 			<snap th:text = "${numeroA}"></snap> + 
 			<snap th:text = "${numeroB}"></snap> =
 			<snap th:text = "${result}"></snap> .
-		</h2>
-		<h2 th:if="${select==restar}">
+		</snap>
+		<snap th:if="${select==restar}">
 					El resultado de 
 					<snap th:text = "${numeroA}"></snap> -
 					<snap th:text = "${numeroB}"></snap> =
 					<snap th:text = "${result}"></snap> .
-		</h2>
-		<h2 th:if="${select==multiplicar}">
+		</snap>
+		<snap th:if="${select==multiplicar}">
 					El resultado de 
 					<snap th:text = "${numeroA}"></snap> *
 					<snap th:text = "${numeroB}"></snap> =
 					<snap th:text = "${result}"></snap> .
-		</h2>
-		<h2 th:if="${select==dividir}">
+		</snap>
+		<snap th:if="${select==dividir}">
 					El resultado de 
 					<snap th:text = "${numeroA}"></snap> /
 					<snap th:text = "${numeroB}"></snap> =
 					<snap th:text = "${result}"></snap> .
-		</h2>
-	</h2>
+		</snap>
+	</snap>
 	<h2 if="${error}"><span th:text="${error}"></h2>
 		
 	<div class="mb-3">
@@ -39,10 +39,10 @@
     </div>
     
 	<select>
-		<option id="sumar">Sumar</option>
-		<option id="restar">restar</option>
-		<option id="dividir">dividir</option>
-		<option if="multiplicar">multiplicar</option>
+		<option value="sumar">Sumar</option>
+		<option value="restar">restar</option>
+		<option value="dividir">dividir</option>
+		<option value="multiplicar">multiplicar</option>
 	</select>
 	
     <div class="d-grid gap-2">

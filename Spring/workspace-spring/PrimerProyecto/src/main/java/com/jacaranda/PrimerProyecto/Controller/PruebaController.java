@@ -26,9 +26,9 @@ public class PruebaController {
 	public String resultOperations(@RequestParam Optional<String> numeroA, @RequestParam Optional<String> numeroB, @RequestParam Optional<String> select, Model model) {
 		try {		
 			if(numeroA.isPresent()&&numeroB.isPresent()&&select.isPresent()) {
-				int result = service.operations(numeroA, numeroB, select);
-				model.addAttribute("numeroA", numeroA);	
-				model.addAttribute("numeroB", numeroB);	
+				int result = service.operations(numeroA, numeroB, select, model);
+				model.addAttribute("numeroA", numeroA.orElse(null));	
+				model.addAttribute("numeroB", numeroB.orElse(null));	
 				model.addAttribute("result", result);	
 			}
 
