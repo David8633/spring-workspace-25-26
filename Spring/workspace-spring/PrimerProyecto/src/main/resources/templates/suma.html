@@ -1,0 +1,37 @@
+
+                        
+<form th:action="@{/}" method="post">
+	<h2 th:if="${!error}">
+		El resultado de 
+		<snap th:text = "${numeroA}"></snap> + 
+		<snap th:text = "${numeroB}"></snap> =
+		<snap th:text = "${result}"></snap> .
+	</h2>
+	<h2 if="${error}"><span th:text="${error}"></h2>
+		
+	<div class="mb-3">
+        <label for="numeroA" class="form-label">Número A:</label>
+        <input type="number" class="form-control" name="numeroA" placeholder="Ingresa el primer número" >
+    </div>
+
+    <div class="mb-3">
+        <label for="numeroB" class="form-label">Número B:</label>
+        <input type="number" class="form-control" name="numeroB" placeholder="Ingresa el segundo número" >
+    </div>
+    
+	<select>
+		<option id="sumar">Sumar</option>
+		<option id="restar">restar</option>
+		<option id="dividir">dividir</option>
+		<option if="multiplicar">multiplicar</option>
+	</select>
+	
+    <div class="d-grid gap-2">
+        <button type="submit">Sumar</button>
+    </div>
+</form>
+
+                 
+   
+
+ 
