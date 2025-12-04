@@ -11,8 +11,13 @@ import com.jacaranda.PrimerProyecto.Service.CalculoService;
 
 @Controller
 public class imcController {
-
+	
 	private static CalculoService  calculoImc;
+	
+	public imcController(CalculoService calculoImc) {
+		super();;
+		this.calculoImc = calculoImc;
+	}
 	
 	@GetMapping("/")
 	public static String showViewIndex() {
@@ -24,6 +29,10 @@ public class imcController {
 		try {
 			String resultado = calculoImc.calcular(weight,age,sex,height);
 			model.addAttribute("resultado", resultado);
+			model.addAttribute("weight", weight.get());
+			model.addAttribute("age", age.get());
+			model.addAttribute("sex", sex.get());
+			model.addAttribute("height", height.get());
 		} catch (Exception e) {
 			e.getMessage();
 		}

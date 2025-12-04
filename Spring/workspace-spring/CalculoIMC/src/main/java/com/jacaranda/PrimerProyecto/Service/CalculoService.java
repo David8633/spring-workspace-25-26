@@ -22,27 +22,27 @@ public class CalculoService {
 					throw new Exception("...");
 				}
 				
-				double imc = amountWeight / (Math.pow(amountHeight,2));
+				double imc = amountWeight / ((amountHeight/100) * (amountHeight/100));
 				
 				if(amountAge>25) {
-					if(amountWeight<18.5) {
+					if(imc<18.5) {
 						return "BAJO PESO";
-					}else if(amountWeight>18.5 && amountWeight<24.9) {
+					}else if(imc>18.5 && imc<24.9) {
 						return "NORMAL PESO";
-					}else if(amountWeight>25.00 && amountWeight<29.9) {
+					}else if(imc>25.00 && imc<29.9) {
 						return "SOBREPESO";
-					}else if(amountWeight>=30.00) {
+					}else if(imc>=30.00) {
 						return "OBESIDAD";
 					}
 					
 				}else {
-					if(amountWeight<17.5) {
+					if(amountAge<17.5) {
 						return "BAJO PESO";
-					}else if(amountWeight>18.5 && amountWeight<26.9) {
+					}else if(imc>18.5 && imc<26.9) {
 						return "NORMAL PESO";
-					}else if(amountWeight>27.00 && amountWeight<32.9) {
+					}else if(imc>27.00 && imc<32.9) {
 						return "SOBREPESO";
-					}else if(amountWeight>=33.00) {
+					}else if(imc>=33.00) {
 						return "OBESIDAD";
 					}
 				}
@@ -53,6 +53,7 @@ public class CalculoService {
 		}else {
 			throw new Exception("Los valores estan vacios.");
 		}
+		return null;
 	}
 
 }
