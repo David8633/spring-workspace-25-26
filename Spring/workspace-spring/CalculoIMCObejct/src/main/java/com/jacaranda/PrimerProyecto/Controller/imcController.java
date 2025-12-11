@@ -14,10 +14,10 @@ import com.jacaranda.PrimerProyecto.Service.CalculoService;
 @Controller
 public class imcController {
 	
-	private static CalculoService  calculoImc;
+	private CalculoService  calculoImc;
 	
 	public imcController(CalculoService calculoImc) {
-		super();;
+		super();
 		this.calculoImc = calculoImc;
 	}
 	

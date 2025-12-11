@@ -20,4 +20,6 @@ public class PersonService {
 	public List<PersonModel> getPerson(){
 		return this.personrepository.findAll();
 	}
+	
+	
 }
