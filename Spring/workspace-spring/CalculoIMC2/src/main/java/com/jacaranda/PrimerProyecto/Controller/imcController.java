@@ -1,12 +1,12 @@
 package com.jacaranda.PrimerProyecto.Controller;
 
-import java.util.Optional;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jacaranda.PrimerProyecto.Service.CalculoService;
 
@@ -26,14 +26,11 @@ public class imcController {
 	}
 	
 	@PostMapping("/")
-	public static String showResult(@RequestParam Optional<String> weight, @RequestParam Optional<String> age,@RequestParam Optional<String> sex,@RequestParam Optional<String> height,@RequestParam Model model) throws Exception {
+	public static String showResult(Model model, @Validated @ModelAttribute Imc imc, BindingResult bindingresult throws Exception {
 		try {
-			String resultado = calculoImc.calcular(weight,age,sex,height);
-			model.addAttribute("resultado", resultado);
-			model.addAttribute("weight", weight.get());
-			model.addAttribute("age", age.get());
-			model.addAttribute("sex", sex.get());
-			model.addAttribute("height", height.get());
+			if(bindingresult.getErrorCount() >0) {
+				return "index";
+			}
 		} catch (Exception e) {
 			throw new Exception(e);
 		}
