@@ -22,21 +22,22 @@ public class imcController {
 	}
 	
 	@GetMapping("/")
-	public  String showViewIndex() {
+	public  String showViewIndex(Model model) {
+		model.addAttribute("imc", new Imc());//Para que el th:object para que cuando se envie los datos se rellene en el object de IMC.
 		return "index";
 	}
 	
 	@PostMapping("/")
-	public String showResult(Model model,@Validated @ModelAttribute("imc") Imc modelimc, BindingResult bindingresult) {
+	public String showResult(Model model,@Validated @ModelAttribute Imc imc, BindingResult bindingresult) {
 		try {
 			
 			if(bindingresult.hasErrors()) {
 				return "index";
 			}
 			
-			String resultado = calculoImc.calcular(modelimc);
+			String resultado = calculoImc.calcular(imc);
 			model.addAttribute("resultado", resultado);
-			model.addAttribute("imcResult", modelimc);
+			model.addAttribute("imcResult", imc);
 			model.addAttribute("imc", new Imc());
 		} catch (Exception e) {
 			e.getMessage();

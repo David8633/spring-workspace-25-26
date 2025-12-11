@@ -8,11 +8,7 @@ import com.jacaranda.PrimerProyecto.Model.Imc;
 public class CalculoService {
 
 	public String calcular(Imc imcData) throws Exception {
-		
-		
 			try {
-				
-				
 				double amountWeight= imcData.getWeight();
 				int amountAge = imcData.getAge(); 
 				double amountHeight = imcData.getHeight();

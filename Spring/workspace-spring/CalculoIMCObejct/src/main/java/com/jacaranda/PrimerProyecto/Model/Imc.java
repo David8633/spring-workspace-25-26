@@ -1,9 +1,9 @@
 package com.jacaranda.PrimerProyecto.Model;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 public class Imc {
 	
@@ -17,8 +17,8 @@ public class Imc {
 	@NotNull(message="este campo no puede ser nulo")
 	private Double weight;
 	
-	@Pattern(regexp="Hombre|Mujer", message="El campo debe ser Hombre o mujer")
-	@NotNull(message="este campo no puede ser nulo")
+	@Pattern(regexp="(?i)Hombre|Mujer", message="El campo debe ser Hombre o mujer")
+	@NotNull(message="Este campo no puede ser nulo")
 	private String sex;
 	
 	@Min(value=0, message="La edad debe ser mayor a 0")

@@ -19,29 +19,29 @@
 		<p th:text="|Tu IMC es ${resultado} con peso ${imcResult.weight} kg y altura ${imcResult.height} m siendo ${imcResult.sex} y con ${imcResult.age} edad.|"></p>
 	  </div>
 	  
-      <form id="imcForm" method="post" th:object="${imcResult}"> 
+      <form id="imcForm" method="post" th:object="${imc}"> 
 		
-        <div class="mb-3" >
+        <div class="mb-3">
           <label for="peso" class="form-label">Peso (kg)</label>
-          <input type="number" class="form-control" name="weight" th:field="*{imcResult.weight}" placeholder="Introduce tu peso" required>
+          <input type="number" class="form-control" name="weight" th:field="*{weight}" placeholder="Introdsuce tu peso" required>
 		  <span th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}" class="fw-bold"></span>
         </div>
 		
 		<div class="mb-3">
 			<label for="edad" class="form-label">Edad </label>
-			<input type="number" class="form-control" name="age" th:field="*{imcResult.age}" placeholder="Introduce tu edad" required>
+			<input type="number" class="form-control" name="age" th:field="*{age}" placeholder="Introduce tu edad" required>
 			<span th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="fw-bold"></span>
 		</div>
 		
 		<div class="mb-3">
 			<label for="sexo" class="form-label">Sexo </label>
-			<input type="text" class="form-control" name="sex" th:field="*{imcResult.sex}" placeholder="Introduce tu sexo">
+			<input type="text" class="form-control" name="sex" th:field="*{sex}" placeholder="Introduce tu sexo">
 			<span th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}" class="fw-bold"></span>
 		</div>
 		
         <div class="mb-3" >
           <label for="altura" class="form-label">Altura (m)</label> 
-          <input type="number" class="form-control" name="height" th:field="*{imcResult.height}" placeholder="Introduce tu altura (metros)" required step="0.01">
+          <input type="number" class="form-control" name="height" th:field="*{height}" placeholder="Introduce tu altura (metros)" required step="0.01">
 		  <span th:if="${#fields.hasErrors('height')}" th:errors="*{height}" class="fw-bold"></span>
         </div>
 		
