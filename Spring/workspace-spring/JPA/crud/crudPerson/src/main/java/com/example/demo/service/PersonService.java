@@ -13,13 +13,21 @@ public class PersonService {
 	private final PersonRepository personrepository;
 
 	public PersonService(PersonRepository personrepository) {
-		super();
 		this.personrepository = personrepository;
 	}
 	
-	public List<PersonModel> getPerson(){
+	public List<PersonModel> getAllPerson(){
 		return this.personrepository.findAll();
 	}
 	
+	public List<PersonModel> getRemovePerson(Integer id){
+		this.personrepository.deleteById(id);
+		return getAllPerson();
+	}
+	
+	public List<PersonModel> getAddPerson(PersonModel p){
+		this.personrepository.save(p);
+		return getAllPerson();
+	}
 	
 }

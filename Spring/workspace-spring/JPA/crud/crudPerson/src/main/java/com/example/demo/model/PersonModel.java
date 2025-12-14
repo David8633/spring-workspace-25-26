@@ -1,9 +1,13 @@
 package com.example.demo.model;
 
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "persona")
@@ -13,20 +17,19 @@ public class PersonModel {
 	private Integer id;
 	
 	@Column(name = "nombre")
+	@NotNull(message="Este campo no puede estar vacio o ser nulo")
 	private String name;
 	
 	@Column(name = "apellido")
+	@NotNull(message="Este campo no puede estar vacio o ser nulo")
 	private String surname;
 	
 	@Column(name = "sexo")
+	@NotNull(message="Este campo no puede estar vacio o ser nulo")
 	private Boolean sex;
 
-	public PersonModel(Integer id, String name, String surname, Boolean sex) {
+	public PersonModel() {
 		super();
-		this.id = id;
-		this.name = name;
-		this.surname = surname;
-		this.sex = sex;
 	}
 
 	public Integer getId() {
