@@ -41,20 +41,28 @@ public class ContactoService {
 		} 
 	}
 	
-	public Contact update(Integer id, Contact contact) throws Exception {
+	public List<Contact> update(Integer id, Contact contact) throws Exception {
 		try {
 			Contact contactExists = contactoRepository.findById(id).get();
 			
 			contactExists.setValue(contact.getValue());
 			contactExists.setContactType(contact.getContactType());
 			
-			return contactExists;
+			return viewAllContacts();
 		} catch (Exception e) {
 			throw new Exception("No se ha podido contactar a base de datos.");
 
 		}
 	}
 	
-	
+	public List<Contact> getAllContactWithId(Integer id) throws Exception{
+		try {
+			return viewAllContacts().stream()
+								.filter(c -> c.getPerson().getId().equals(id))
+								.toList();
+		} catch (Exception e) {
+			throw new Exception("No se ha podido contactar a base de datos.");
+		}
+	}
 	
 }

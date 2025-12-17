@@ -20,10 +20,22 @@ public class Contact  {
     @Column(name = "valor")
     private String value;
 
+    @ManyToOne
+    @JoinColumn(name = "id_persona")
+    private Person person;
+    
     public Integer getId() {
         return id;
     }
+    public Person getPerson() {
+        return person;
+    }
 
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+   
+    
     public void setId(Integer id) {
         this.id = id;
     }
